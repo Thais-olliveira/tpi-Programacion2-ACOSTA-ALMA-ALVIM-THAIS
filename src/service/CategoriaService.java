@@ -54,6 +54,11 @@ public class CategoriaService {
     // HU-CAT-03: Editar categoria
     public void editar(Long id, String nombre, String descripcion) throws EntidadNoEncontradaException {
         Categoria categoria = buscarPorId(id);
+        for (Categoria c : categorias) {
+            if (!c.isEliminado() && !c.getId().equals(id) && c.getNombre().equalsIgnoreCase(nombre)) {
+                throw new IllegalArgumentException("Ya existe una categoría con el nombre: " + nombre);
+            }
+        }
         categoria.setNombre(nombre);
         categoria.setDescripcion(descripcion);
     }

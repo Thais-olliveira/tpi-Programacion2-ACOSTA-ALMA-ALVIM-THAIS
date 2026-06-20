@@ -20,6 +20,9 @@ public class ProductoService {
     // HU-PROD-02: Crear producto
     public Producto crear(String nombre, Double precio, String descripcion, int stock,
                           String imagen, boolean disponible, Categoria categoria) throws StockInvalidoException {
+        if (categoria == null || categoria.isEliminado()) {
+            throw new IllegalArgumentException("La categoría no existe o está eliminada");
+        }
         if (precio < 0) {
             throw new StockInvalidoException("El precio no puede ser negativo");
         }
@@ -65,6 +68,17 @@ public class ProductoService {
         if (stock < 0) {
             throw new StockInvalidoException("El stock no puede ser negativo");
         }
+        
+        if (categoria == null || categoria.isEliminado()) {
+            throw new IllegalArgumentException("La categoría no existe o está eliminada");
+        }
+
+        Categoria categoriaAnterior = producto.getCategoria();
+        if (categoriaAnterior != null && !categoriaAnterior.equals(categoria)) {
+            categoriaAnterior.removerProducto(producto);
+            categoria.agregarProducto(producto);
+        }
+        
         producto.setPrecio(precio);
         producto.setStock(stock);
         producto.setCategoria(categoria);

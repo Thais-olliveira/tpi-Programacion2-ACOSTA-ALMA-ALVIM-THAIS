@@ -38,6 +38,10 @@ public class Categoria extends Base {
     public void agregarProducto(Producto producto) {
         this.productos.add(producto);
     }
+    
+    public void removerProducto(Producto producto) {
+        this.productos.remove(producto);
+    }
 
     @Override
     public String toString() {
