@@ -30,6 +30,7 @@ public class Pedido extends Base implements Calculable {
     private FormaPago formaPago;
     private Usuario usuario;                          // dueño del pedido
     private List<DetallePedido> detalles = new ArrayList<>();    // composición
+    private long contadorDetalle = 1L;   
 
     public Pedido(Usuario usuario, FormaPago formaPago) {
         super();
@@ -47,6 +48,7 @@ public class Pedido extends Base implements Calculable {
         }
         double subtotal = cantidad * precioUnitario;
         DetallePedido detalle = new DetallePedido(cantidad, subtotal, producto);
+        detalle.setId(contadorDetalle++);   
         detalles.add(detalle);
         calcularTotal();   // recalcula después de cada adición
     }

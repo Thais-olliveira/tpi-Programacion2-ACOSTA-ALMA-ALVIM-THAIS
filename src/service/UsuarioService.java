@@ -7,6 +7,7 @@ package service;
 import entities.Usuario;
 import enums.Rol;
 import exception.EntidadNoEncontradaException;
+import exception.MailDuplicadoException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,11 +95,8 @@ public class UsuarioService {
         boolean dup = usuarios.stream()
             .filter(u -> !u.isEliminado() && u.getId() != excludeId)
             .anyMatch(u -> u.getMail().equalsIgnoreCase(mail));
-        if (dup) throw new MailDuplicadoException(mail);
+    if (dup) {
+        throw new MailDuplicadoException("Ya existe un usuario con el mail: " + mail);
     }
-
-    private static class MailDuplicadoException extends Exception {
-        public MailDuplicadoException(String mail) {
-        }
     }
 }

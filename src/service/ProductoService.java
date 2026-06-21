@@ -90,7 +90,4 @@ public class ProductoService {
         producto.setEliminado(true);
     }
 
-    public Object listarActivos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

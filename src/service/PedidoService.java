@@ -31,6 +31,7 @@ import java.util.List;
 public class PedidoService {
 
     private final List<Pedido> pedidos = new ArrayList<>();
+    private long contadorId = 1L; 
 
     // ── Listar ────────────────────────────────────────────────────────────
     public List<Pedido> listarActivos() {
@@ -60,6 +61,7 @@ public class PedidoService {
             throw new EntidadNoEncontradaException("El usuario indicado no existe o está eliminado.");
         }
         Pedido nuevo = new Pedido(usuario, formaPago);
+        nuevo.setId(contadorId++);  
         pedidos.add(nuevo);
         return nuevo;
     }
