@@ -3,6 +3,8 @@ package main;
 import service.CategoriaService;
 import service.ProductoService;
 import java.util.Scanner;
+import service.PedidoService;
+import service.UsuarioService;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,6 +12,11 @@ public class Main {
 
         CategoriaService categoriaService = new CategoriaService();
         ProductoService productoService = new ProductoService();
+        PedidoService pedidoService = new PedidoService();
+        UsuarioService usuarioService = new UsuarioService();
+        
+       // PedidoMenu pedidoMenu = new PedidoMenu();
+       // UsuarioMenu usuarioMenu = new UsuarioMenu();
 
         int opcion;
         do {
@@ -26,8 +33,8 @@ public class Main {
             switch (opcion) {
                 case 1 -> new MenuCategoria(sc, categoriaService).mostrar();
                 case 2 -> new MenuProductos(sc, productoService, categoriaService).mostrar();
-                case 3 -> System.out.println("[Usuarios] - en construcción");
-                case 4 -> System.out.println("[Pedidos] - en construcción");
+                case 3 -> new UsuarioMenu(usuarioService, sc).mostrar();
+                case 4 -> new PedidoMenu(pedidoService, usuarioService, productoService, sc).mostrar();
                 case 0 -> System.out.println("Saliendo del sistema...");
                 default -> System.out.println("Opción inválida. Intente de nuevo.");
             }
