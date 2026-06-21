@@ -34,7 +34,9 @@ public class Main {
                 case 1 -> new MenuCategoria(sc, categoriaService).mostrar();
                 case 2 -> new MenuProductos(sc, productoService, categoriaService).mostrar();
                 case 3 -> new UsuarioMenu(usuarioService, sc).mostrar();
+                //UsuarioMenu(usuarioService, sc).mostrar();
                 case 4 -> new PedidoMenu(pedidoService, usuarioService, productoService, sc).mostrar();
+                //PedidoMenu(pedidoService, usuarioService, productoService, sc).mostrar();
                 case 0 -> System.out.println("Saliendo del sistema...");
                 default -> System.out.println("Opción inválida. Intente de nuevo.");
             }

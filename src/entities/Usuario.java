@@ -70,10 +70,14 @@ public class Usuario extends Base {
 
     @Override
     public String toString() {
-        return String.format(
-            "[ID: %d] %-15s %-15s | Mail: %-30s | Cel: %-15s | Rol: %s",
-            getId(), nombre, apellido, mail, celular, rol
-        );
+        return "[ID: " + getId() + "] " + nombre + " " + apellido + 
+                " | Mail: " + mail +
+                " | Celular: " + celular +
+                " | Rol: " + rol;
+               //String.format(
+//            "[ID: %d] %-15s %-15s | Mail: %-30s | Cel: %-15s | Rol: %s",
+//            getId(), nombre, apellido, mail, celular, rol
+//        );
     }
 }
 

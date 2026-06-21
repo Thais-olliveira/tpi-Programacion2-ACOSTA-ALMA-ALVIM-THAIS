@@ -31,9 +31,7 @@ public class MenuProductos extends MenuBase {
             System.out.println("4. Eliminar");
             System.out.println("0. Volver");
             System.out.print("Seleccione: ");
-
             opcion = leerEntero();
-
             switch (opcion) {
                 case 1 -> listar();
                 case 2 -> crear();

@@ -23,8 +23,13 @@ import java.util.List;
  */
 public class UsuarioService {
 
-    private final List<Usuario> usuarios = new ArrayList<>();
-
+    private List<Usuario> usuarios;
+    private long contadorId;
+    
+    public UsuarioService(){
+        this.usuarios = new ArrayList<>();
+        this.contadorId = 1L;
+    }
     // ── Listar ────────────────────────────────────────────────────────────
     public List<Usuario> listarActivos() {
         return usuarios.stream().filter(u -> !u.isEliminado()).toList();
@@ -41,10 +46,19 @@ public class UsuarioService {
 
     // ── Crear ─────────────────────────────────────────────────────────────
     public Usuario crear(String nombre, String apellido, String mail, String celular, String contrasena, Rol rol) throws MailDuplicadoException {
-        validarMail(mail, -1);
-        Usuario nuevo = new Usuario(nombre, apellido, mail, celular, contrasena, rol);
-        usuarios.add(nuevo);
-        return nuevo;
+        for (Usuario u : usuarios){
+            if (!u.isEliminado() && u.getMail().equalsIgnoreCase(mail)){
+                throw new MailDuplicadoException("Ya existe un usuario con el mail: " + mail);
+            }
+        }
+
+
+        //validarMail(mail, -1);
+        Usuario usuario = new Usuario(nombre, apellido, mail, celular, contrasena, rol);
+        usuario.setId(contadorId);
+        contadorId++;
+        usuarios.add(usuario);
+        return usuario;
     }
 
     // ── Editar ────────────────────────────────────────────────────────────
