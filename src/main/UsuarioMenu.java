@@ -9,6 +9,7 @@ import enums.Rol;
 import java.util.List;
 import java.util.Scanner;
 import service.UsuarioService;
+import exception.MailDuplicadoException;
 
 /**
  *
@@ -63,18 +64,27 @@ public class UsuarioMenu extends MenuBase {
 
     // ── HU-USR-02 Crear ───────────────────────────────────────────────────
     private void crear() {
-        try {
-            String nombre   = leerTextoObligatorio("Nombre: ");
-            String apellido = leerTextoObligatorio("Apellido: ");
-            String mail     = leerTextoObligatorio("Mail: ");
-            String celular  = leerTexto("Celular: ");
-            String pass     = leerTextoObligatorio("Contraseña: ");
-            Rol rol = elegirRol();
+        String nombre   = leerTextoObligatorio("Nombre: ");
+        String apellido = leerTextoObligatorio("Apellido: ");
+        String mail     = leerTextoObligatorio("Mail: ");
+        String celular  = leerTexto("Celular: ");
+        String pass     = leerTextoObligatorio("Contraseña: ");
+        Rol rol = elegirRol();
 
-            Usuario nuevo = service.crear(nombre, apellido, mail, celular, pass, rol);
-            System.out.println("Usuario creado con ID: " + nuevo.getId());
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+        boolean creado = false;
+        while (!creado) {
+            try {
+                Usuario nuevo = service.crear(nombre, apellido, mail, celular, pass, rol);
+                System.out.println("Usuario creado con ID: " + nuevo.getId());
+                creado = true;
+            } catch (MailDuplicadoException e) {
+                System.out.println("Error: " + e.getMessage());
+                mail = leerTextoObligatorio("Ingrese otro mail (0 para cancelar): ");
+                if (mail.equals("0")) {
+                    System.out.println("Creación cancelada.");
+                    return;
+                }
+            }
         }
     }
 
