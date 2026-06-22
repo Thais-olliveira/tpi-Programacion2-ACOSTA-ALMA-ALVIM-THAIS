@@ -110,9 +110,9 @@ colecciones y manejo de excepciones propias.
 
 ## Enlaces
 
-- **Video demostrativo:** ``
-- **Documentación (PDF):** ``
-- **Repositorio:** `https://github.com/Thais-olliveira/tpi-Programacion2-ACOSTA-ALMA-ALVIM-THAIS`
+- **Video demostrativo:** [Ver en YouTube](https://youtu.be/FiMqjmiCERM)
+- **Documentación (PDF):** [Descargar PDF](https://github.com/user-attachments/files/29226465/Acosta_Alma-Alvim_Thais-TPI-Programacion2.pdf)
+- **Repositorio:** [Ver en GitHub](https://github.com/Thais-olliveira/tpi-Programacion2-ACOSTA-ALMA-ALVIM-THAIS)
 
 ---
 
