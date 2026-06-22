@@ -78,12 +78,17 @@ src/
     ├── EntidadNoEncontradaException.java
     ├── StockInvalidoException.java
     └── MailDuplicadoException.java
-```
 
+
+```
 La arquitectura separa responsabilidades en tres capas: **entidades** (modelo),
 **servicios** (reglas de negocio) y **menús** (interacción por consola).
 
 ---
+## Diagrama de clases (UML)
+
+<img width="944" height="1051" alt="Diagrama de clases del sistema Food Store" src="https://github.com/user-attachments/assets/bcee1aba-6873-425d-ba7d-0eeff666bc09" />
+
 
 ## Funcionalidades
 
