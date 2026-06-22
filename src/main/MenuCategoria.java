@@ -46,7 +46,7 @@ public class MenuCategoria extends MenuBase {
 
     private void crear() {
         String nombre = leerTextoObligatorio("Nombre: ");
-        String descripcion = leerTexto("Descripción: ");
+        String descripcion = leerTextoObligatorio("Descripción: ");
         try {
             Categoria c = service.crear(nombre, descripcion);
             System.out.println("Categoría creada con id: " + c.getId());
