@@ -9,6 +9,10 @@ Toda la información se almacena **en memoria** mediante colecciones (no utiliza
 de datos).
 
 ---
+## Autoras
+
+- Alma Acosta (Comisión 06)
+- Thaís Alvim (Comisión 10)
 
 ## Requisitos
 
