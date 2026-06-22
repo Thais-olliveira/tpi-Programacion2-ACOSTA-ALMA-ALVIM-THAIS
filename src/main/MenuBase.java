@@ -58,7 +58,8 @@ public abstract class MenuBase {
         System.out.print(prompt);
         String texto = sc.nextLine().trim();
         while (texto.isEmpty()) {
-            System.out.print("El campo no puede estar vacío" + prompt);
+            System.out.println("El campo no puede estar vacío");
+            System.out.print(prompt);
             texto = sc.nextLine().trim();
         }
         return texto;
